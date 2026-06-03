@@ -1,0 +1,1 @@
+The idea behind the prohect is to get used to create ETL pipelines.
