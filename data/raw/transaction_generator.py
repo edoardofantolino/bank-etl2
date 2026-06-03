@@ -13,6 +13,7 @@ OUTPUT_FILE = "transactions.csv"
 start_date = datetime(2026, 1, 1)
 end_date = datetime(2026, 5, 31)
 
+## Next step would be to improve the generations of the IBAN codes
 accounts = [
     "IT1234", "IT2345", "IT3456", "IT4567",
     "IT5678", "IT6789", "IT7890", "IT8901"
