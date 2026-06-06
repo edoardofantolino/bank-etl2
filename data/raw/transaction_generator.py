@@ -27,20 +27,40 @@ types = ["withdrawal", "deposit", "transfer"]
 # DATE GENERATOR
 # =========================
 def random_date():
-    delta = end_date - start_date
-    random_days = random.randint(0, delta.days)
-    return start_date + timedelta(days=random_days)
+
+    valid_or_not = random.randint(0,100)
+
+    if valid_or_not < 99:
+        delta = end_date - start_date
+        random_days = random.randint(0, delta.days)
+        date = start_date + timedelta(days=random_days)
+        date = date.strftime("%d/%m/%Y")
+        return date
+    else:
+        if valid_or_not == 99:
+            return "01/01/1750"
+        return
 
 # =========================
 # AMOUNT GENERATOR
 # =========================
 def random_amount(tx_type):
-    if tx_type == "deposit":
-        return round(random.uniform(50, 5000), 2)
-    elif tx_type == "withdrawal":
-        return round(-random.uniform(20, 2000), 2)
-    else:  # transfer
-        return round(random.uniform(-1500, 1500), 2)
+
+    valid_or_not = random.randint(0,100)
+
+    # if valid_or_not is lower than 100 then we get a valid amount, 
+    # otherwise we get an invalid string or empty value 
+    if valid_or_not < 99:
+        if tx_type == "deposit":
+            return round(random.uniform(50, 5000), 2)
+        elif tx_type == "withdrawal":
+            return round(-random.uniform(20, 2000), 2)
+        else:  # transfer
+            return round(random.uniform(-1500, 1500), 2)
+    else:
+        if valid_or_not == 99:
+            return "23%02))12"
+        return
 
 # =========================
 # GENERATION
@@ -56,11 +76,12 @@ with open(OUTPUT_FILE, mode="w", newline="") as file:
 
         writer.writerow([
             i,
-            random_date().strftime("%d/%m/%Y"),
+            random_date(),
             random.choice(accounts),
             random_amount(tx_type),
             random.choice(currencies),
             tx_type
         ])
+
 
 print(f"Generated {N} transactions in {OUTPUT_FILE}")
