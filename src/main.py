@@ -45,6 +45,5 @@ df_run.to_csv(
     index=False
 )
 
-
 log.info("Load completed")
 log.info("ETL END")
