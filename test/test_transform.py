@@ -38,7 +38,7 @@ def test_clean_amount():
     assert not df["amount"].isna().any()
 
 
-# Verify that transaction id is unique
+# Verify that transaction id is unique after clean_date
 def test_transaction_id_unique():
     df = pd.DataFrame(data)
     df = clean_date(df)
