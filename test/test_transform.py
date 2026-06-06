@@ -1,5 +1,6 @@
 from src.transform import clean_date
 from src.transform import clean_amount
+from src.transform import transform
 import pandas as pd
 
 data = [
@@ -43,3 +44,11 @@ def test_transaction_id_unique():
     df = clean_date(df)
 
     assert df["transaction_id"].is_unique
+
+
+# Verify that accountid is not null
+def test_account_nan():
+    df = pd.DataFrame(data)
+    df_valid, _, _ = transform(df, "test")
+
+    assert not df_valid["account"].isna().any()
