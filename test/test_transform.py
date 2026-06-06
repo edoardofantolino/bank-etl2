@@ -13,7 +13,7 @@ def test_clean_date():
     # df = pd.DataFrame(data)
 
     # assert clean_date(df) == 10
-    assert 5 == 7
+    assert 5 == 8
 
 def test_add():
     assert add(2, 3) == 5
