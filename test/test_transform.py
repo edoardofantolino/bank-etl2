@@ -1,6 +1,6 @@
 from src.transform import clean_date
 from src.transform import add
-import pandas as pd
+# import pandas as pd
 
 def test_clean_date():
     data = [
@@ -10,7 +10,7 @@ def test_clean_date():
         {"transaction_id": 4, "date": "20/03/2026", "account": "IT7890", "amount": -975.96, "currency": "EUR", "type": "withdrawal"}
     ]
 
-    df = pd.DataFrame(data)
+    # df = pd.DataFrame(data)
 
     # assert clean_date(df) == 10
     assert 5 == 5
