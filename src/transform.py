@@ -3,9 +3,6 @@ from datetime import datetime
 
 ingestion_timestamp = datetime.utcnow()
 
-# TEST function for CI
-def add(a, b):
-    return a + b
 
 def clean_date(df):
     ## DATA MANAGEMENT
@@ -32,12 +29,16 @@ def clean_date(df):
     return df
 
 
+def clean_amount(df):
+     ## AMOUNT MANAGEMENT
+    df["amount"] = pd.to_numeric(df["amount"], errors="coerce")
+
+    return df
+
 def transform(df, pipeline_run_id):
     
     df = clean_date(df)
-
-    ## AMOUNT MANAGEMENT
-    df["amount"] = pd.to_numeric(df["amount"], errors="coerce")
+    df = clean_amount(df)
 
     # Add rejection reason
     df["rejection_reasons"] = ""
