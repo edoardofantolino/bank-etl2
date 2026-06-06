@@ -3,6 +3,7 @@ import logging
 def get_logger():
     logger = logging.getLogger("etl")
     logger.setLevel(logging.INFO)
+    
 
     if not logger.handlers:
 
