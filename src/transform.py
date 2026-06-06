@@ -3,9 +3,13 @@ from datetime import datetime
 
 ingestion_timestamp = datetime.utcnow()
 
-def transform(df, pipeline_run_id):
-    
+# TEST function for CI
+def add(a, b):
+    return a + b
+
+def clean_date(df):
     ## DATA MANAGEMENT
+
     df["date"] = (
         df["date"]
         .str.replace("/", "-")
@@ -25,6 +29,13 @@ def transform(df, pipeline_run_id):
         errors="coerce"
     )
 
+    return df
+
+
+def transform(df, pipeline_run_id):
+    
+    df = clean_date(df)
+
     ## AMOUNT MANAGEMENT
     df["amount"] = pd.to_numeric(df["amount"], errors="coerce")
 
@@ -42,11 +53,9 @@ def transform(df, pipeline_run_id):
     df_valid = df[df["rejection_reasons"].str.len() == 0]
     df_invalid = df[df["rejection_reasons"].str.len() > 0]
 
-
     df_valid = df_valid.drop(columns=["rejection_reasons"])
     df_valid["pipeline_run_id"] = pipeline_run_id
     df_valid["ingestion_timestamp"] = ingestion_timestamp
-
 
     # EXPLODE INTO ROWS
     df_rejected = df_invalid.copy()
