@@ -3,9 +3,9 @@ import streamlit as st
 
 # df = pd.read_csv("data/raw/transactions.csv")
 
-st.title("🏦 Banking ETL Dashboard")
+st.title("🏦 Banking ETL Dashboard 2")
 
-st.metric("Numero Transazioni")
+st.metric("Numero Transazioni", 5)
 
 static_value = 5
 st.metric(
