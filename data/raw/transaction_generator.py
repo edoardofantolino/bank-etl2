@@ -3,7 +3,7 @@ import random
 from datetime import datetime, timedelta
 
 # Set number of transactions
-N = 10000
+N = 10
 
 OUTPUT_FILE = "transactions.csv"
 
