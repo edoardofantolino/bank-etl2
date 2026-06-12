@@ -5,10 +5,7 @@ import streamlit as st
 
 st.title("🏦 Banking ETL Dashboard")
 
-st.metric(
-    "Numero Transazioni"
-    # len(df)
-)
+st.metric("Numero Transazioni")
 
 static_value = 5
 st.metric(
