@@ -10,9 +10,10 @@ st.metric(
     # len(df)
 )
 
+static_value = 5
 st.metric(
     "Volume Totale"
-    # f"€ {df['amount'].sum():,.2f}"
+    f"€ {static_value}"
 )
 
 st.subheader("Transazioni per tipo")
