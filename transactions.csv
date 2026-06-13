@@ -1,0 +1,11 @@
+transaction_id,date,account,amount,currency,type
+1,05/03/2026,IT3456,-1149.12,EUR,withdrawal
+2,05/02/2026,IT7890,-599.29,EUR,withdrawal
+3,21/01/2026,IT7890,374.04,EUR,transfer
+4,16/01/2026,IT6789,-513.29,EUR,transfer
+5,17/02/2026,IT5678,1855.62,EUR,deposit
+6,17/04/2026,IT2345,3305.39,EUR,deposit
+7,09/01/2026,IT8901,106.73,EUR,transfer
+8,19/01/2026,IT1234,-655.75,EUR,transfer
+9,13/01/2026,IT6789,-1624.79,EUR,withdrawal
+10,22/05/2026,IT3456,3171.74,EUR,deposit

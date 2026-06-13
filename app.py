@@ -1,8 +1,24 @@
 import streamlit as st
 import pandas as pd
 from numpy.random import default_rng as rng
+from streamlit_autorefresh import st_autorefresh
+from supabase import create_client
 
-df = pd.read_csv("data/raw/transactions.csv")
+url = "https://yinthengfapdhtvgidoi.supabase.co"
+key = "sb_publishable_P4Py0xWkBg2YAU5Wm0fpcw_Nj0--Ju9"
+
+supabase = create_client(url, key)
+
+response = supabase.table("transactions").select("*").execute()
+data = response.data
+df = pd.DataFrame(data)
+
+st_autorefresh(
+    interval=5000,
+    key="refresh"
+)
+
+# df = pd.read_csv("data/raw/continuous_transactions.csv")
 
 st.title("🏦 Banking ETL Dashboard 2")
 
@@ -13,27 +29,54 @@ st.metric(
     f"€ {df['amount'].sum():,.2f}"
 )
 
-st.metric("Numero Transazioni", df.shape[0])
-st.metric("Volume Totale", round(df["amount"].sum(),2))
+single_volume = (
+    df.groupby("timestamp")["amount"]
+    .sum()
+    .reset_index()
+)
 
-st.subheader("Transazioni per tipo")
+st.subheader("Singola transazione")
 
-st.bar_chart(
-    df.groupby("type")["amount"].sum()
+st.line_chart(
+    single_volume.set_index("timestamp")
 )
 
 
+df["timestamp"] = pd.to_datetime(
+    df["timestamp"],
+    format="mixed"
+)
+
 daily_volume = (
-    df.groupby("date")["amount"]
+    df.groupby(df["timestamp"].dt.date)["amount"]
     .sum()
     .reset_index()
-    .sort_values("date")
 )
 
 st.subheader("Volume giornaliero")
 
 st.line_chart(
-    daily_volume.set_index("date")
+    daily_volume.set_index("timestamp")
+)
+
+daily_volume = (
+    df.groupby(df["timestamp"].dt.date)["amount"]
+    .sum()
+    .reset_index()
+)
+
+
+
+st.subheader("Numero transazioni giornaliere")
+
+daily_volume = (
+    df.groupby(df["timestamp"].dt.date)["amount"]
+    .count()
+    .reset_index()
+)
+
+st.line_chart(
+    daily_volume.set_index("timestamp")
 )
 
 
@@ -52,8 +95,14 @@ with col2:
     st.metric("Duplicati", duplicates)
 
 
-df = pd.DataFrame(rng(0).standard_normal((20, 3)), columns=["a", "b", "c"])
+st.subheader("Transazioni per tipo")
 
-st.area_chart(df)
+st.bar_chart(
+    df.groupby("transaction_type")["amount"].sum()
+)
 
-st.line_chart(df)
+# df = pd.DataFrame(rng(0).standard_normal((20, 3)), columns=["a", "b", "c"])
+
+# st.area_chart(df)
+
+# st.line_chart(df)
