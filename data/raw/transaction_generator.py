@@ -58,8 +58,9 @@ def random_amount(tx_type):
         else:  # transfer
             return round(random.uniform(-1500, 1500), 2)
     else:
-        if valid_or_not == 99:
-            return "23%02))12"
+        if valid_or_not == 99 or valid_or_not == 100:
+            # return "23%02))12"
+            return 10000.00
         return
 
 # =========================
