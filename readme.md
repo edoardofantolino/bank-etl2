@@ -1,9 +1,4 @@
-The idea behind the prohect is to get used to create ETL pipelines.
+## ETL project
 
-Another update to the read me file
+The idea behind the project is to extract, transform and load data.
 
-Another update 
-## TITLE?
-small update
-Another small update
-another small update
