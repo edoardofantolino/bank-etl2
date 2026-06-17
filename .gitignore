@@ -19,5 +19,5 @@ logs/
 Thumbs.db
 
 # .csv
-data/raw/*.csv
-data/output/*.csv
+# data/raw/*.csv
+# data/output/*.csv
