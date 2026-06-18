@@ -47,6 +47,7 @@ bank-etl2/
 
 La pipeline elabora i dati grezzi seguendo queste fasi:
 
+```
 CSV INPUT
 │
 ▼
@@ -64,7 +65,7 @@ TEST PYTEST
 │
 ▼
 GITHUB ACTIONS (CI/CD)
-
+```
 
 ---
 
