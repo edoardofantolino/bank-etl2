@@ -15,27 +15,31 @@ L’obiettivo è dimostrare la costruzione di una pipeline dati in stile enterpr
 
 ## 🧱 Architettura del progetto
 
-bank-etl2/\n
-       │\n
-       ├── data/
-       │   ├── raw/
-       │   └── processed/
-       │
-       ├── src/
-       │   ├── generator/
-       │   ├── extract.py
-       │   ├── transform.py
-       │   ├── load.py
-       │   ├── main.py    
-       │   └── logger.py
-       │
-       ├── tests/
-       ├── logs/
-       │   └── etl.log            
-       ├── .github/workflows/
-       │   └── ci.yml                
-       ├── requirements.txt
-       └── README.md
+```
+bank-etl2/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── src/
+│   ├── generator/
+│   ├── extract.py
+│   ├── transform.py
+│   ├── load.py
+│   ├── main.py
+│   └── logger.py
+│
+├── tests/
+├── logs/
+│   └── etl.log
+│
+├── .github/workflows/
+│   └── ci.yml
+│
+├── requirements.txt
+└── README.md
+```
 
 ---
 
