@@ -94,13 +94,14 @@ Il sistema garantisce l’affidabilità dei dati attraverso:
 
 Ogni esecuzione della pipeline viene tracciata tramite log strutturati:
 
-
+```
 2026-06-16 16:12:15 - ETL START
 2026-06-16 16:12:17 - Record estratti: 2000000
 2026-06-16 16:12:21 - Record validi: 1980087
 2026-06-16 16:12:21 - Record non validi: 19913
 2026-06-16 16:13:04 - Caricamento completato
 2026-06-16 16:13:04 - ETL END
+```
 
 
 I log vengono salvati per mantenere uno storico delle esecuzioni e garantire tracciabilità.
