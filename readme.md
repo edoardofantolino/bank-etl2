@@ -15,8 +15,8 @@ L’obiettivo è dimostrare la costruzione di una pipeline dati in stile enterpr
 
 ## 🧱 Architettura del progetto
 
-bank-etl2/
-       │
+bank-etl2/\n
+       │\n
        ├── data/
        │   ├── raw/
        │   └── processed/
